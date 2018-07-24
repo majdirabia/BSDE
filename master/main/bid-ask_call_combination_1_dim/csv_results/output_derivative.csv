@@ -1,0 +1,25 @@
+,Parameters,Specific Parameters,run,stat parameter,time,values
+0,q,,,,,0.0
+1,mu,,,,,0.06
+2,R ,,,,,0.06
+3,r ,,,,,0.04
+4,sigma,,,,,0.2
+5,T,,,,,0.5
+6,K,,,,,100.0
+7,S0,,,,,100.0
+0,,N_particles,,,,1000.0
+1,,m_discretization,,,,8.0
+2,,N_run,,,,5.0
+3,,n_picard,,,,3.0
+4,,nearest neighbors,,,,100.0
+5,,l,,,,1.0
+0,,,run 1,,39.392,3.4118
+1,,,run 2,,43.434,3.3354
+2,,,run 3,,45.075,3.0466
+3,,,run 4,,42.669,3.3244
+4,,,run 5,,44.554,3.5348
+0,,,,mean,,3.3306
+1,,,,std,,0.1796
+2,,,,95% confidence interval,,"[3.2602, 3.401]"
+3,,,,min,,3.0466
+4,,,,max,,3.5348

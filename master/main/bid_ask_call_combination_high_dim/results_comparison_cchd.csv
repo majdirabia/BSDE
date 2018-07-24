@@ -1,0 +1,32 @@
+Expected,5.7145,,,
+,,,,
+,stat parameter,values,average time,N_particles
+RandomForest,mean,5.6999,8min24s,10 000
+RandomForest,std,0.0188,,
+RandomForest,95% confidence interval,"[5.6981, 5.7017]",,
+RandomForest,min,5.6574,,
+RandomForest,max,5.7359,,
+GradBoosting,mean,5.7064,8min20s,10 000
+GradBoosting,std,0.0186,,
+GradBoosting,95% confidence interval,"[5.7046, 5.7082]",,
+GradBoosting,min,5.67,,
+GradBoosting,max,5.7388,,
+Derivative,mean,5.6941,41min,4 000
+Derivative,std,0.0281,,
+Derivative,95% confidence interval,"[5.6913, 5.6969]",,
+Derivative,min,5.6357,,
+Derivative,max,5.7342,,
+Mesh,mean,5.6885,5min48s,3 000
+Mesh,std,0.0438,,
+Mesh,95% confidence interval,"[5.6842, 5.6928]",,
+Mesh,min,5.6116,,
+Mesh,max,5.7929,,
+,Parameters,values,,
+0,q,0,,
+1,mu,0.05,,
+2,R ,0.06,,
+3,r ,0.01,,
+4,sigma,0.2,,
+5,T,0.25,,
+6,K,100,,
+7,S0,100,,

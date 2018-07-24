@@ -1,0 +1,35 @@
+,,stat parameter,values
+RandomForest,34,mean,2.9694
+RandomForest,35,std,0.0436
+RandomForest,36,95% confidence interval,"[2.9651, 2.9737]"
+RandomForest,37,min,2.8896
+RandomForest,38,max,3.0422
+Derivative,25,mean,2.9403
+Derivative,26,std,0.1441
+Derivative,27,95% confidence interval,"[2.9121, 2.9685]"
+Derivative,28,min,2.7534
+Derivative,29,max,3.2832
+LSM,33,mean,2.9381
+LSM,34,std,0.0154
+LSM,35,95% confidence interval,"[2.9366, 2.9396]"
+LSM,36,min,2.9159
+LSM,37,max,2.9787
+Mesh,32,mean,2.841
+Mesh,33,std,0.0711
+Mesh,34,95% confidence interval,"[2.834, 2.848]"
+Mesh,35,min,2.6986
+Mesh,36,max,2.9682
+GradBoosting,35,mean,2.9687
+GradBoosting,36,std,0.0465
+GradBoosting,37,95% confidence interval,"[2.9641, 2.9733]"
+GradBoosting,38,min,2.886
+GradBoosting,39,max,3.0544
+,Parameters,values
+0,q,0.0
+1,mu,0.05
+2,R ,0.06
+3,r ,0.01
+4,sigma,0.2
+5,T,0.25
+6,K,100.0
+7,S0,100.0

@@ -1,0 +1,140 @@
+Mesh Fast = 5.518860958791046
+Mesh  = 5.712175329700023
+time for mesh all computation = 13.449956893920898
+BS-comparison = 5.942417772333471
+         74053 function calls (74048 primitive calls) in 425.695 seconds
+
+   Ordered by: call count
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     6126    0.034    0.000    0.034    0.000 {built-in method builtins.max}
+     5577    2.459    0.000    2.459    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     5003    0.012    0.000    0.730    0.000 _methods.py:34(_prod)
+     5003    0.031    0.000    0.761    0.000 fromnumeric.py:2390(prod)
+     4441    1.287    0.000    1.287    0.000 {built-in method numpy.core.multiarray.dot}
+     4000    0.161    0.000    0.161    0.000 {method 'standard_normal' of 'mtrand.RandomState' objects}
+     3501    0.004    0.000    0.008    0.000 {built-in method builtins.issubclass}
+     2702    0.002    0.000    0.002    0.000 {built-in method builtins.len}
+     2648    0.371    0.000    0.371    0.000 {built-in method numpy.core.multiarray.array}
+     2011    0.021    0.000    0.021    0.000 {built-in method numpy.core.multiarray.zeros}
+     2000    0.004    0.000    0.006    0.000 linalg.py:111(isComplexType)
+     1789    0.004    0.000    0.004    0.000 {method 'get' of 'dict' objects}
+     1778    0.004    0.000    0.011    0.000 {built-in method builtins.isinstance}
+     1633    0.010    0.000    0.016    0.000 numeric.py:406(asarray)
+     1495    0.003    0.000    0.003    0.000 {built-in method builtins.getattr}
+     1089    0.002    0.000    0.002    0.000 {built-in method builtins.id}
+     1000    0.017    0.000    0.028    0.000 linalg.py:139(_commonType)
+     1000    0.001    0.000    0.001    0.000 {method '__array_prepare__' of 'numpy.ndarray' objects}
+     1000    0.004    0.000    0.006    0.000 linalg.py:124(_realType)
+     1000    0.003    0.000    0.003    0.000 {built-in method builtins.min}
+     1000    0.008    0.000    0.009    0.000 linalg.py:198(_assertRankAtLeast2)
+     1000    0.010    0.000    0.021    0.000 linalg.py:106(_makearray)
+     1000    0.151    0.000    0.261    0.000 linalg.py:532(cholesky)
+     1000    0.012    0.000    0.012    0.000 linalg.py:101(get_linalg_error_extobj)
+     1000    0.012    0.000    0.018    0.000 linalg.py:209(_assertNdSquareness)
+     1000    0.694    0.001    1.211    0.001 BSDE.py:760(generate_correlated_paths)
+     1000    0.018    0.000    0.018    0.000 {method 'astype' of 'numpy.ndarray' objects}
+      726   59.234    0.082   59.234    0.082 {method 'tolist' of 'numpy.ndarray' objects}
+      568    0.003    0.000    0.003    0.000 {built-in method builtins.hasattr}
+      567    0.001    0.000    0.002    0.000 base.py:887(isspmatrix)
+      504    0.001    0.000    0.001    0.000 base.py:99(get_shape)
+      385    0.003    0.000    0.003    0.000 numeric.py:476(asanyarray)
+      378    0.012    0.000    0.012    0.000 getlimits.py:245(__init__)
+      378    0.002    0.000    0.002    0.000 validation.py:155(<genexpr>)
+      363    0.019    0.000    8.715    0.024 copy.py:137(deepcopy)
+      363    0.011    0.000    0.013    0.000 copy.py:253(_keep_alive)
+      363    8.679    0.024    8.679    0.024 {method '__deepcopy__' of 'numpy.ndarray' objects}
+      315    0.001    0.000    0.001    0.000 csr.py:212(_swap)
+      315    0.002    0.000    0.002    0.000 getlimits.py:270(max)
+      252    0.002    0.000    0.002    0.000 compressed.py:90(getnnz)
+      252    0.014    0.000    0.557    0.002 sputils.py:125(get_index_dtype)
+      246    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+      189    0.002    0.000    0.753    0.004 {method 'min' of 'numpy.ndarray' objects}
+      189    0.002    0.000    0.770    0.004 _methods.py:25(_amax)
+      189    0.002    0.000    0.751    0.004 _methods.py:28(_amin)
+      189    0.002    0.000    0.771    0.004 {method 'max' of 'numpy.ndarray' objects}
+      189    0.005    0.000    0.005    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+      138    0.001    0.000    0.001    0.000 _weakrefset.py:70(__contains__)
+      126    0.878    0.007    0.878    0.007 {method 'copy' of 'numpy.ndarray' objects}
+      126    0.003    0.000    0.005    0.000 shape_base.py:61(atleast_2d)
+      126    0.004    0.000    0.004    0.000 base.py:69(__init__)
+      126    0.003    0.000    0.007    0.000 validation.py:128(_shape_repr)
+      126    0.001    0.000    0.003    0.000 validation.py:107(_num_samples)
+      126    0.001    0.000    0.001    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+      126    0.007    0.000    0.017    0.000 validation.py:45(_assert_all_finite)
+      126    0.001    0.000    0.001    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+      126    0.001    0.000    0.004    0.000 data.py:23(__init__)
+      126    0.003    0.000    0.003    0.000 {built-in method numpy.core.multiarray.arange}
+      126    0.003    0.000    0.003    0.000 base.py:77(set_shape)
+      126    0.002    0.000    0.004    0.000 {method 'join' of 'str' objects}
+      126    0.002    0.000    0.004    0.000 sputils.py:198(isshape)
+      126    0.000    0.000    0.009    0.000 _methods.py:31(_sum)
+      126    0.001    0.000    0.003    0.000 sputils.py:97(to_native)
+      126    0.008    0.000    0.042    0.000 validation.py:267(check_array)
+      126    0.003    0.000    0.007    0.000 fromnumeric.py:128(reshape)
+      126    0.001    0.000    0.010    0.000 {method 'sum' of 'numpy.ndarray' objects}
+       63    1.114    0.018    1.865    0.030 pairwise.py:148(euclidean_distances)
+       63    0.001    0.000    0.023    0.000 pairwise.py:57(check_pairwise_arrays)
+       63    0.001    0.000    0.001    0.000 getlimits.py:256(min)
+       63    0.009    0.000    2.212    0.035 compressed.py:915(tocoo)
+       63    0.008    0.000    1.016    0.016 coo.py:217(_check)
+       63    0.000    0.000    0.001    0.000 sputils.py:182(isintlike)
+       63    0.000    0.000    0.034    0.001 base.py:807(fit)
+       63    0.001    0.000    0.001    0.000 coo.py:184(getnnz)
+       63    0.004    0.000    0.034    0.001 base.py:177(_fit)
+       63    0.001    0.000    0.019    0.000 {method 'all' of 'numpy.ndarray' objects}
+       63    0.004    0.000    0.004    0.000 {built-in method numpy.core.multiarray.einsum}
+       63    0.000    0.000    0.000    0.000 numerictypes.py:660(issubclass_)
+       63   11.287    0.179   28.091    0.446 base.py:287(kneighbors)
+       63    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+       63    0.006    0.000    0.940    0.015 compressed.py:24(__init__)
+       63    0.001    0.000    3.420    0.054 fromnumeric.py:642(argpartition)
+       63    0.005    0.000    0.005    0.000 {built-in method numpy.core.multiarray.empty}
+       63    0.001    0.000    0.001    0.000 numerictypes.py:728(issubdtype)
+       63    0.005    0.000    0.019    0.000 compressed.py:126(check_format)
+       63    0.000    0.000    0.000    0.000 __init__.py:425(_get_n_jobs)
+       63    0.001    0.000    0.004    0.000 extmath.py:58(row_norms)
+       63    0.001    0.000    0.021    0.000 fromnumeric.py:1968(all)
+       63    0.002    0.000    0.004    0.000 unsupervised.py:116(__init__)
+       63    0.003    0.000    0.005    0.000 compressed.py:1044(prune)
+       63    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:996(_handle_fromlist)
+       63    0.001    0.000    0.724    0.011 extmath.py:172(safe_sparse_dot)
+       63    0.288    0.005    0.288    0.005 {built-in method scipy.sparse._sparsetools.expandptr}
+       63    0.002    0.000    0.002    0.000 base.py:118(_init_params)
+       63    0.268    0.004   29.304    0.465 base.py:438(kneighbors_graph)
+       63    0.003    0.000    1.029    0.016 coo.py:116(__init__)
+       63    0.131    0.002   29.473    0.468 graph.py:50(kneighbors_graph)
+       63    0.001    0.000    0.001    0.000 sputils.py:213(issequence)
+       63    0.001    0.000    1.867    0.030 pairwise.py:1105(pairwise_distances)
+       63    0.001    0.000    1.866    0.030 pairwise.py:1043(_parallel_pairwise)
+       63   11.487    0.182   11.487    0.182 {method 'argsort' of 'numpy.ndarray' objects}
+       63    0.000    0.000    0.018    0.000 _methods.py:40(_all)
+       63    0.001    0.000    0.003    0.000 fromnumeric.py:1377(ravel)
+       63    0.000    0.000    0.000    0.000 graph.py:26(_query_include_self)
+       63    0.001    0.000    0.007    0.000 abc.py:178(__instancecheck__)
+       63    1.128    0.018    3.340    0.053 base.py:546(nonzero)
+       63    0.001    0.000   11.488    0.182 fromnumeric.py:823(argsort)
+       63    3.419    0.054    3.419    0.054 {method 'argpartition' of 'numpy.ndarray' objects}
+       63    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+       63    0.001    0.000    0.002    0.000 pairwise.py:33(_return_float_dtype)
+       60    0.756    0.013    0.756    0.013 {method 'outer' of 'numpy.ufunc' objects}
+       12    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        7    0.000    0.000    0.199    0.028 fromnumeric.py:2789(mean)
+        7    0.000    0.000    0.000    0.000 _methods.py:43(_count_reduce_items)
+        7    0.001    0.000    0.198    0.028 _methods.py:53(_mean)
+        6    0.000    0.000    0.000    0.000 _weakrefset.py:26(__exit__)
+        6    0.000    0.000    0.000    0.000 {method 'remove' of 'set' objects}
+        6    0.000    0.000    0.000    0.000 {method '__subclasshook__' of 'object' objects}
+        6    0.000    0.000    0.000    0.000 _weakrefset.py:16(__init__)
+        6    0.004    0.001    0.004    0.001 _weakrefset.py:58(__iter__)
+        6    0.000    0.000    0.000    0.000 _weakrefset.py:81(add)
+        6    0.000    0.000    0.000    0.000 _weakrefset.py:52(_commit_removals)
+      6/1    0.000    0.000    0.005    0.005 abc.py:194(__subclasscheck__)
+        6    0.000    0.000    0.000    0.000 _weakrefset.py:20(__enter__)
+        6    0.000    0.000    0.000    0.000 {method '__subclasses__' of 'type' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.045    0.045    1.259    1.259 BSDE.py:774(generate_multiple_asset)
+        1  321.333  321.333  425.695  425.695 BSDE.py:991(get_price_mesh)
+        1    0.105    0.105    0.304    0.304 BSDE.py:784(exercise_matrix)
+        1    0.000    0.000    0.000    0.000 BSDE.py:749(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method time.time}

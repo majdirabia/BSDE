@@ -1,0 +1,57 @@
+\BOOKMARK [1][-]{section*.2}{Declaration}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Stochastic Differential Equation}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Backward Stochastic Differential Equations}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.2.1}{Problem}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.2}{Motivation}{section.1.2}% 6
+\BOOKMARK [0][-]{chapter.2}{SDE}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Discretization of forward SDE}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{First Order BSDE}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Existence and Uniqueness}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{First order BSDE and semi-linear PDE}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.3}{Reflected Backward Stochastic Differential Equation \(RBSDE\)}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.4}{Discretization}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.4.1}{BSDE}{section.3.4}% 14
+\BOOKMARK [2][-]{subsection.3.4.2}{RBSDE}{section.3.4}% 15
+\BOOKMARK [0][-]{chapter.4}{Regression}{}% 16
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.2}{Mesh Method}{chapter.4}% 18
+\BOOKMARK [2][-]{subsection.4.2.1}{Likelihood Ratio Weights}{section.4.2}% 19
+\BOOKMARK [2][-]{subsection.4.2.2}{Limits}{section.4.2}% 20
+\BOOKMARK [1][-]{section.4.3}{Least Square Monte-Carlo}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Random Forest Regression}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.4.1}{Decision Tree}{section.4.4}% 23
+\BOOKMARK [2][-]{subsection.4.4.2}{Randomized Forest}{section.4.4}% 24
+\BOOKMARK [1][-]{section.4.5}{Derivative}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.6}{Picard Iteration}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.7}{Time Complexity}{chapter.4}% 27
+\BOOKMARK [0][-]{chapter.5}{Applications}{}% 28
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.1.1}{Bid-ask model}{section.5.1}% 30
+\BOOKMARK [2][-]{subsection.5.1.2}{Credit Valuation Adjustment \(CVA\)}{section.5.1}% 31
+\BOOKMARK [1][-]{section.5.2}{One dimension}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.2.1}{Bid-ask European call option}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.2}{Bid-ask European call combination}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.3}{CVA}{section.5.2}% 35
+\BOOKMARK [2][-]{subsection.5.2.4}{American Call Option}{section.5.2}% 36
+\BOOKMARK [1][-]{section.5.3}{High Dimension}{chapter.5}% 37
+\BOOKMARK [2][-]{subsection.5.3.1}{Geometrical average on seven assets following bid-ask model}{section.5.3}% 38
+\BOOKMARK [2][-]{subsection.5.3.2}{Geometrical average on twenty assets following bid-ask European call combination model}{section.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.3.3}{Max Call Option on 5 assets}{section.5.3}% 40
+\BOOKMARK [2][-]{subsection.5.3.4}{Exchange Option between two correlated assets}{section.5.3}% 41
+\BOOKMARK [2][-]{subsection.5.3.5}{Exchange Option between the average of twenty correlated assets}{section.5.3}% 42
+\BOOKMARK [0][-]{chapter.6}{Second Order BSDE}{}% 43
+\BOOKMARK [1][-]{section.6.1}{Definition}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{Existence and Uniqueness}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{Second order BSDE and non-linear PDE}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.4}{Discretization}{chapter.6}% 47
+\BOOKMARK [1][-]{section.6.5}{Application : Portfolio Optimization}{chapter.6}% 48
+\BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 49
+\BOOKMARK [0][-]{chapter.8}{Future Work}{}% 50
+\BOOKMARK [0][-]{section*.48}{Appendices}{}% 51
+\BOOKMARK [0][-]{Appendix.a.A}{Random Forest}{}% 52
+\BOOKMARK [1][-]{section.a.A.1}{Complexity}{Appendix.a.A}% 53
+\BOOKMARK [1][-]{section.a.A.2}{Hyperparameters tuning}{Appendix.a.A}% 54
+\BOOKMARK [2][-]{subsection.a.A.2.1}{Number of trees generated}{section.a.A.2}% 55
+\BOOKMARK [2][-]{subsection.a.A.2.2}{Depth of the trees}{section.a.A.2}% 56
+\BOOKMARK [2][-]{subsection.a.A.2.3}{Variable Importance and features selection}{section.a.A.2}% 57

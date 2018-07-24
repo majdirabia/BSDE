@@ -1,0 +1,18 @@
+set terminal epslatex size 5.0, 3.0
+set output "fixk.tex"
+#set terminal wxt size 550,362 persist 
+set format y "$%g$"
+set format x "$%g$"
+set xlabel "$\\kappa\$"
+#set ylabel ’This is\\a longer\\version\\ of\\the $y$\\ axis’ offset -1
+set label "frequency" at 1.15,0.02 right
+set arrow from 1.085,0.03 to 1.053 ,0.055
+set label "relative error" at 0.94,0.13 right
+set arrow from 0.95,0.12 to 0.99 ,0.1 
+set key top left
+set xtic 0.8,0.1,1.2
+plot "k.dat" u ($1):(abs($3))\
+	   title "relative error" with lines,\
+		"k.dat" u 1:5\
+		title "frequency of $r^l_t$" \
+		with points pointtype 6

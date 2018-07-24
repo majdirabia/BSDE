@@ -1,0 +1,9 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Regression}{}% 2
+\BOOKMARK [1][-]{section.3}{Derivative Iteration}{}% 3
+\BOOKMARK [1][-]{section.4}{Simulations}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{1st : Price convergence}{section.4}% 5
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Analysis of the number of neighbors on the Price}{subsection.4.1}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Analysis of the parameter l}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Plotting the noisy Process Z against the Stock Price X}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.4}{Time analysis}{section.4}% 9

@@ -1,0 +1,30 @@
+,,stat parameter,values
+LSM,33,mean,7.1553
+LSM,34,std,0.0375
+LSM,35,95% confidence interval,"[7.1516, 7.159]"
+LSM,36,min,7.0907
+LSM,37,max,7.2242
+Mesh,32,mean,7.1875
+Mesh,33,std,0.1387
+Mesh,34,95% confidence interval,"[7.1739, 7.2011]"
+Mesh,35,min,6.9085
+Mesh,36,max,7.4492
+Derivative,35,mean,7.1779
+Derivative,36,std,0.3088
+Derivative,37,95% confidence interval,"[7.1476, 7.2082]"
+Derivative,38,min,6.7418
+Derivative,39,max,7.7752
+RandomForest,34,mean,7.2331
+RandomForest,35,std,0.0979
+RandomForest,36,95% confidence interval,"[7.2235, 7.2427]"
+RandomForest,37,min,7.0684
+RandomForest,38,max,7.4308
+,Parameters,values,
+0,q,0,
+1,mu,0.06,
+2,R ,0.06,
+3,r ,0.04,
+4,sigma,0.2,
+5,T,0.5,
+6,K,100,
+7,S0,100,

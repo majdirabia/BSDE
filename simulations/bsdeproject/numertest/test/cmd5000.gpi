@@ -1,0 +1,14 @@
+#set terminal epslatex size 5.0, 3.0
+#set output "fixk.tex"
+set terminal wxt size 550,362 persist 
+set format y "$%g$"
+set format x "$%g$"
+set xlabel "# of time grid"
+set ylabel "relative\\error" offset -1
+set key top right
+set xtic 0, 5, 30
+plot "5000k12d2.dat" u ($1):(abs($2))\
+	   title "second order" with lines,\
+		"5000k12d3.dat" u 1:2\
+		title "third order" \
+		with linespoints pointtype 6

@@ -1,0 +1,22 @@
+%        File: test.tex
+%     Created: Sun Aug 14 04:00 PM 2016 M
+% Last Change: Sun Aug 14 04:00 PM 2016 M
+%
+\documentclass[a4paper]{article}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\begin{document}
+\begin{figure}
+  \begin{subfigure}[b]{0.5\textwidth}
+	\centering
+	\resizebox{\textwidth}{!}{\input{sk}}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+	\centering
+	\centering
+	\resizebox{\textwidth}{!}{\input{fixk}}
+  \end{subfigure}
+\end{figure}
+\end{document}
+

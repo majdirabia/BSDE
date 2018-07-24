@@ -1,0 +1,5 @@
+"""Base class for forest of trees-based classifiers.
+
+Warning: This class should not be used directly. Use derived classes
+instead.
+"""

@@ -1,0 +1,58 @@
+\BOOKMARK [1][-]{section*.1}{Declaration}{}% 1
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 2
+\BOOKMARK [2][-]{subsection.1.1}{SDE}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{BSDE}{section.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Problem}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Motivation}{subsection.1.2}% 6
+\BOOKMARK [1][-]{section.2}{SDE}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Discretization of forward SDE}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{First Order BSDE}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Existence and Uniqueness}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{First order BSDE and semi-linear PDE}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Reflected Backward Stochastic Differential Equation \(RBSDE\)}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Discretization}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Regression}{}% 14
+\BOOKMARK [2][-]{subsection.4.1}{Mesh Method}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.1.1}{likelihood Ratio Weights}{subsection.4.1}% 16
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Limits}{subsection.4.1}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Least Square Monte-Carlo}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Random Forest and Tree Based regression}{section.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Random Forest}{subsection.4.3}% 20
+\BOOKMARK [2][-]{subsection.4.4}{Gradient Boosting}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.5}{Derivative}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.6}{Picard Iteration}{section.4}% 23
+\BOOKMARK [2][-]{subsection.4.7}{Variance Reduction}{section.4}% 24
+\BOOKMARK [1][-]{section.5}{Applications}{}% 25
+\BOOKMARK [2][-]{subsection.5.1}{Introduction}{section.5}% 26
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Bid-ask model}{subsection.5.1}% 27
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Credit Valuation Adjustment \(CVA\)}{subsection.5.1}% 28
+\BOOKMARK [2][-]{subsection.5.2}{One dimension}{section.5}% 29
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Bid-ask European call option}{subsection.5.2}% 30
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Bid-ask European call combination}{subsection.5.2}% 31
+\BOOKMARK [3][-]{subsubsection.5.2.3}{CVA}{subsection.5.2}% 32
+\BOOKMARK [3][-]{subsubsection.5.2.4}{American Option}{subsection.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.3}{High Dimension}{section.5}% 34
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Geometrical average on seven assets following bid-ask model}{subsection.5.3}% 35
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Geometrical average on twenty-five assets following bid-ask European call model}{subsection.5.3}% 36
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Geometrical average on twenty assets following bid-ask European call combination model}{subsection.5.3}% 37
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Exchange Option between two correlated assets}{subsection.5.3}% 38
+\BOOKMARK [3][-]{subsubsection.5.3.5}{Exchange Option between the average of twenty correlated assets}{subsection.5.3}% 39
+\BOOKMARK [1][-]{section.6}{Second Order BSDE}{}% 40
+\BOOKMARK [2][-]{subsection.6.1}{Definition}{section.6}% 41
+\BOOKMARK [2][-]{subsection.6.2}{Existence and Uniqueness}{section.6}% 42
+\BOOKMARK [2][-]{subsection.6.3}{Second order BSDE and non-linear PDE}{section.6}% 43
+\BOOKMARK [2][-]{subsection.6.4}{Discretization}{section.6}% 44
+\BOOKMARK [2][-]{subsection.6.5}{Application : Portfolio Optimization}{section.6}% 45
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 46
+\BOOKMARK [1][-]{section*.17}{Appendices}{}% 47
+\BOOKMARK [1][-]{Appendix.a.A}{Random Forest}{}% 48
+\BOOKMARK [2][-]{subsection.a.A.1}{Decision Tree}{Appendix.a.A}% 49
+\BOOKMARK [2][-]{subsection.a.A.2}{Randomized Forest}{Appendix.a.A}% 50
+\BOOKMARK [2][-]{subsection.a.A.3}{Complexity}{Appendix.a.A}% 51
+\BOOKMARK [2][-]{subsection.a.A.4}{Hyperparameters tuning}{Appendix.a.A}% 52
+\BOOKMARK [3][-]{subsubsection.a.A.4.1}{Number of trees generated}{subsection.a.A.4}% 53
+\BOOKMARK [3][-]{subsubsection.a.A.4.2}{Out of Bag sampling}{subsection.a.A.4}% 54
+\BOOKMARK [3][-]{subsubsection.a.A.4.3}{Depth of the trees}{subsection.a.A.4}% 55
+\BOOKMARK [3][-]{subsubsection.a.A.4.4}{Variable Importance and features selection}{subsection.a.A.4}% 56
+\BOOKMARK [1][-]{Appendix.a.B}{Model Assessment and Selection}{}% 57
+\BOOKMARK [2][-]{subsubsection.a.B.0.5}{Bias and Variance}{Appendix.a.B}% 58

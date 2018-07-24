@@ -1,0 +1,27 @@
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Time Complexity with number of samples M, number of paths m, number of picard iteration $n_{picard}$, dimension d, K the number of selected features, and $n_{trees}$ the number of trees in the Random Forest\relax }}{20}{table.caption.14}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces LSM\relax }}{25}{table.caption.18}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Mesh with number of paths and time discretization\relax }}{27}{table.caption.21}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Random Forest with number of paths and number of trees generated\relax }}{28}{table.caption.24}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Random Forest with number of samples N and maximum number of leafs(in percentage of N)\relax }}{29}{table.caption.25}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Derivative method with number of paths and scale parameter $l$\relax }}{32}{table.caption.29}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Bid-ask European call option with one asset\relax }}{33}{table.caption.33}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Bid-ask European call combination option with one asset\relax }}{34}{table.caption.34}
+\contentsline {table}{\numberline {5.8}{\ignorespaces CVA via BSDE compared to Guyon and Labord\IeC {\`e}re PDE method\relax }}{34}{table.caption.35}
+\contentsline {table}{\numberline {5.9}{\ignorespaces Call combination of geometric average \relax }}{35}{table.caption.37}
+\contentsline {table}{\numberline {5.10}{\ignorespaces Random Forest with maximum number of features K and maximum number of leafs b\relax }}{37}{table.caption.39}
+\contentsline {table}{\numberline {5.11}{\ignorespaces Random Forest time computation with dimension d and maximum number of leafs in seconds \relax }}{37}{table.caption.40}
+\contentsline {table}{\numberline {5.12}{\ignorespaces Bid-ask Geometric Average European Call option on 7 assets\relax }}{38}{table.caption.42}
+\contentsline {table}{\numberline {5.13}{\ignorespaces Call combination of geometric average \relax }}{39}{table.caption.43}
+\contentsline {table}{\numberline {5.14}{\ignorespaces Max Call option on 5 assets \relax }}{39}{table.caption.45}
+\contentsline {table}{\numberline {5.15}{\ignorespaces Bid-ask European call option with one asset\relax }}{40}{table.caption.46}
+\contentsline {table}{\numberline {5.16}{\ignorespaces Bid-ask European call option with one asset\relax }}{41}{table.caption.47}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

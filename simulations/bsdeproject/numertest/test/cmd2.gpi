@@ -1,0 +1,15 @@
+set terminal epslatex size 5.0, 3.0
+set output "sk.tex"
+#set terminal wxt size 550,362 persist 
+set dgrid3d
+set encoding utf8
+set xtic 0.8, 0.1, 1.2
+set ytic 0.8, 0.1, 1.2
+set ztic 0., 0.1, 3.0
+set key top right 
+set ticslevel 0
+set format y "$%g$"
+set format x "$%g$"
+set xlabel "$\\kappa\$"
+set ylabel "$S_0$"
+splot "sk10k20.dat"  u 1:2:3 title "relative error" with lines

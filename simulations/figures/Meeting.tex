@@ -1,0 +1,74 @@
+\documentclass[english,11pt,openany]{article}
+\usepackage{graphicx}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage[executivepaper,margin=1in]{geometry}
+%\usepackage[charter]{mathdesign}
+\usepackage{babel}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\usepackage{amssymb}
+\usepackage[colorlinks=true]{hyperref} 
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+\newtheorem{prop}{Proposition}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\definecolor{light-gray}{gray}{0.70}
+
+\lstset{
+	language=R,
+	basicstyle=\footnotesize,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=15pt,
+	frame=single,
+	commentstyle=\color{blue},
+	%backgroundcolor=\color{gg} 
+}
+
+
+\begin{document}
+
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+	   $T$ & $m$* & $N$* & $S_0$  & $K$ & r& $\sigma$ & q & p & n\_estimators & max\_leaf\_nodes\\
+	\hline
+	              1  & 12 & 10 000 & 100  & 100 &  $1\%$ & $30\% $ & $5\%$ & 7 & 100 & 10
+\end{tabular}
+\vspace{1cm}
+
+* = When the parameter is not varying
+
+	\begin{figure}[h]
+		\includegraphics[scale=0.8]{Rforest_p_assets_n_varying.png}
+		\caption{Price with N increasing}
+	\end{figure} \hfill
+	
+	
+	\begin{figure}[h]
+		\includegraphics[scale=0.8]{Rforest_p_assets_rfestimators_varying.png}
+		\caption{Price with n\_estimators increasing}
+	\end{figure}
+	
+
+	\begin{figure}[h]
+		\includegraphics[scale=0.8]{Rforest_7_assets_rf_max_leaf_nodes_varying.png}
+		\caption{Price with max\_leaf\_nodes increasing}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\includegraphics[scale=0.8]{Rforest_p_assets.png}
+		\caption{Price with p increasing}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\includegraphics[scale=0.8]{Rforest_p_assets_m_varying.png}
+		\caption{Price with m increasing}
+	\end{figure}
+	
+
+\end{document}

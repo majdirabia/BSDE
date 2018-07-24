@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Random Forest}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Overview}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Most sensitive parameter}{6}{0}{2}
+\beamer@subsectionintoc {2}{3}{Other parameters}{7}{0}{2}
+\beamer@subsectionintoc {2}{4}{Remarks}{9}{0}{2}
+\beamer@subsectionintoc {2}{5}{Max leaf nodes analysis (on European call example : expected 7.15)}{10}{0}{2}
+\beamer@subsectionintoc {2}{6}{Parameter fitting : min\_samples\_split and min\_samples\_leaf}{14}{0}{2}
+\beamer@sectionintoc {3}{Applications}{15}{0}{3}
+\beamer@sectionintoc {4}{What's next}{25}{0}{4}

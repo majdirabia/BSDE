@@ -1,0 +1,29 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Progress_report.aux
+The style file: apa.bst
+Database file #1: biblio.bib
+Name 1 in "Pardoux, and Peng, S." has a comma at the end for entry pardoux:1990
+while executing---line 1048 of file apa.bst
+Name 1 in "Pardoux, and Peng, S." has a comma at the end for entry pardoux:1990
+while executing---line 1048 of file apa.bst
+Too many commas in name 1 of "Cheridito, P., Soner, H.M. and Touzi, N., Victoir" for entry cheridito:2BSDE
+while executing---line 1048 of file apa.bst
+Too many commas in name 1 of "Cheridito, P., Soner, H.M. and Touzi, N., Victoir" for entry cheridito:2BSDE
+while executing---line 1048 of file apa.bst
+Warning--empty journal in bender:lsmbsde
+Warning--empty journal in bismut:1973
+Warning--empty year in warin:amoption
+Warning--empty journal in warin:amoption
+Too many commas in name 1 of "Cheridito, P., Soner, H.M. and Touzi, N., Victoir" for entry cheridito:2BSDE
+while executing---line 1123 of file apa.bst
+Warning--empty journal in Cutler:slides
+Warning--empty journal in Quantization
+Warning--empty journal in glasserman:amoption
+Warning--empty journal in gobet:picard
+Warning--empty journal in guo:fd
+Warning--empty journal in GuyonLabordere:cva
+Warning--empty journal in kloeden2012numerical
+Name 1 in "Pardoux, and Peng, S." has a comma at the end for entry pardoux:1990
+while executing---line 1123 of file apa.bst
+Warning--empty journal in rodgers:amoption
+Warning--empty journal in touzi:2BSDE
+(There were 6 error messages)

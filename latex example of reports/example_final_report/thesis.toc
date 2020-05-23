@@ -1,6 +1,0 @@
-\contentsline {section}{\hbox to\@tempdima {\hfil }\hspace {-.35in}{\bfseries {}List of Figures}}{vi}{section*.2}
-\contentsline {section}{\hbox to\@tempdima {\hfil }\hspace {-.35in}{\bfseries {}List of Tables}}{vii}{section*.4}
-\contentsline {section}{\hbox to\@tempdima {\hfil }\hspace {-.35in}{\bfseries {}List of Algorithms}}{viii}{section*.6}
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}First section}{1}{section.1.1}
-\contentsline {chapter}{References}{3}{section*.8}

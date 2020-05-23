@@ -1,19 +1,16 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.optimize import leastsq
 from scipy.stats import norm
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-import scipy.stats as stats
+
 from sklearn.neighbors import kneighbors_graph, NearestNeighbors
 import copy
 from sklearn import svm
 import parmap
-import time
 from bokeh.plotting import figure, show
 import scipy
 import scipy.sparse as sparse
 import matplotlib.pyplot as plt
-from concurrent.futures import Executor, ProcessPoolExecutor
 
 plt.rcParams['figure.figsize'] = (7, 7)  # Make the figures a bit bigger
 
@@ -64,8 +61,7 @@ def hypercube(x_data, y_data, x, n_hc):
 
 class BSDE(object):
     def __init__(self, S0, K, T, mu, sigma, q):
-        '''
-
+        """
         Parameters
         ==========
         S0             : float
@@ -80,8 +76,8 @@ class BSDE(object):
                           volatility
          Returns
         =======
-        BSDE : class
-        '''
+        BSDE : object representing a Backward Stochastic Differential Equation
+        """
         self.S0 = S0
         self.K = K
         self.T = T
@@ -114,7 +110,23 @@ class BSDE(object):
                 B[t] = np.sqrt(t) * X
             return S, B
 
-    def get_price_lsm(self, R, r, N, m, K1=95., K2=105., deg=8, oPayoff="call", oType=OptionPayoff.EUROPEAN, n_picard=10):
+    def get_payoff(self, payoff_type, S, K1, K2):
+        if payoff_type == "call":
+            Y = np.maximum(S[-1] - self.K, 0)
+        elif payoff_type == "put":
+            Y = np.maximum(self.K - S[-1], 0)
+        elif payoff_type == "call combination":
+            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
+        elif payoff_type == "put combination":
+            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
+        elif payoff_type == "call average":
+            Y = np.maximum(S.mean(axis=0) - self.K, 0)
+        else:
+            raise Exception("please enter a correct payoff type")
+        return Y
+
+    def get_price_lsm(self, R, r, N, m, K1=95., K2=105., deg=8, oPayoff="call", oType=OptionPayoff.EUROPEAN,
+                      n_picard=10):
         """
         Compute derivative price for a bid ask model using Longstaff Schwartz method
         :param R: float ->  lending rate
@@ -140,17 +152,7 @@ class BSDE(object):
         # generate forward and delta of brownian motions S, dB
         S, dB = self.generate_paths(r, N, m)
         # price of the option at time T = Initialization for a call
-        Y = np.zeros(S[-1].shape)
-        if oPayoff == "call":
-            Y = np.maximum(S[-1] - self.K, 0)
-        elif oPayoff == "put":
-            Y = np.maximum(self.K - S[-1], 0)
-        elif oPayoff == "call combination":
-            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
-        elif oPayoff == "put combination":
-            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
-        elif oPayoff == "call average":
-            Y = np.maximum(S.mean(axis=0) - self.K, 0)
+        Y = self.get_payoff(oPayoff, S, K1, K2)
 
         Y_inc = np.zeros(Y.shape)
 
@@ -184,7 +186,7 @@ class BSDE(object):
                 # plt.plot(X, Z, 'r.')
                 # plt.show()
             Y_opt = df * np.mean(Y)
-            return Y_opt
+
 
         elif (oType == OptionPayoff.AMERICAN):
             # Iteration over time backwardly
@@ -206,13 +208,13 @@ class BSDE(object):
                 # plt.show()
             Y_opt = df * np.mean(Y)
             # print (np.mean(Z), np.var(Z))
-            return Y_opt
+        else:
+            raise Exception('Please enter a correct option Type : either American or European')
+        return Y_opt
 
     def get_price_derivative(self, R, r, N, m, K1=95., K2=105., deg=5, oPayoff="call", oType="European", n_picard=5,
                              l=None, use_display=False, n_neighbors=None):
-        '''
-        Function to generate stock paths.
-
+        """
         Parameters
         ==========
 
@@ -231,7 +233,7 @@ class BSDE(object):
         =======
         Y_opt : float
                 Price of the European option
-        '''
+        """
 
         # Time-step
         dt = self.T / m
@@ -241,16 +243,8 @@ class BSDE(object):
         # S, dB
         S, dB = self.generate_paths(r, N, m)
         # price of the option at time T = Initialization for a call
-        if oPayoff == "call":
-            Y = np.maximum(S[-1] - self.K, 0)
-        elif oPayoff == "put":
-            Y = np.maximum(self.K - S[-1], 0)
-        elif oPayoff == "call combination":
-            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
-        elif oPayoff == "put combination":
-            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
-        elif oPayoff == "call average":
-            Y = np.maximum(S.mean(axis=0) - self.K, 0)
+
+        Y = self.get_payoff(oPayoff, S, K1, K2)
 
         Y_inc = np.zeros(N)
         if oType == 'European':
@@ -336,9 +330,7 @@ class BSDE(object):
                 # plt.plot(Y,Z, 'r.')
                 # plt.show()
             Y_opt = df * np.mean(Y)
-            Z_opt = df * np.mean(Z)
-            # print (np.mean(Z), np.var(Z))
-            return (Y_opt)
+            return Y_opt
 
     def get_price_RF(self, R, r, N, m, K1=95., K2=105., oPayoff="call", RF_n_tree=100, RF_max_leaf_nodes=100,
                      RF_max_features='auto',
@@ -349,7 +341,7 @@ class BSDE(object):
                      oType='European',
                      n_picard=10,
                      regression='RF'):
-        '''
+        """
         Get price using Random Forest
 
         Parameters
@@ -375,7 +367,8 @@ class BSDE(object):
         =======
         Y_opt : float
                 Price of the European option with different interest rates
-        '''
+        """
+
         # Time-step
         dt = self.T / m
         # Discount factor
@@ -384,16 +377,7 @@ class BSDE(object):
         # S, dB
         S, dB = self.generate_paths(r, N, m)
         # price of the option at time T = Initialization for a call
-        if oPayoff == "call":
-            Y = np.maximum(S[-1] - self.K, 0)
-        elif oPayoff == "put":
-            Y = np.maximum(self.K - S[-1], 0)
-        elif oPayoff == "call combination":
-            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
-        elif oPayoff == "put combination":
-            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
-        elif oPayoff == "call average":
-            Y = np.maximum(S.mean(axis=0) - self.K, 0)
+        Y = self.get_payoff(oPayoff, S, K1, K2)
 
         if regression == 'RF':
             rf = RandomForestRegressor(n_estimators=RF_n_tree,
@@ -476,7 +460,7 @@ class BSDE(object):
     def get_price_hc(self, R, r, N, m, delta=10, K1=95., K2=105., n_hc=20, oPayoff="call", oType="European",
                      n_picard=0):
         """
-        Function to generate stock paths.
+        Price using Hyper Cubes
 
         Parameters
         ==========
@@ -489,8 +473,6 @@ class BSDE(object):
                           Number of paths generated
         m               : int
                           number of steps
-        d               : int
-                          polynomial fit degree
 
         Return
         =======
@@ -505,14 +487,7 @@ class BSDE(object):
         # S, dB
         S, dB = self.generate_paths(r, N, m)
         # price of the option at time T = Initialization for a call
-        if oPayoff == "call":
-            Y = np.maximum(S[-1] - self.K, 0)
-        elif oPayoff == "put":
-            Y = np.maximum(self.K - S[-1], 0)
-        elif oPayoff == "call combination":
-            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
-        elif oPayoff == "put combination":
-            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
+        Y = self.get_payoff(oPayoff, S, K1, K2)
 
         if oType == 'European':
             # Iteration over time backwardly
@@ -540,7 +515,7 @@ class BSDE(object):
                 # plt.plot(X, Z, 'r.')
                 # plt.show()
             Y_opt = df * np.mean(Y)
-        if oType == 'American':
+        elif oType == 'American':
             # Iteration over time backwardly
             for t in range(m - 1, 0, -1):
                 X = S[t]
@@ -560,6 +535,9 @@ class BSDE(object):
             Y_opt = df * np.mean(Y)
             Z_opt = df * np.mean(Z)
             # print (np.mean(Z), np.var(Z))
+        else:
+            raise Exception("Please enter a correct option type oType")
+
         return Y_opt
 
     def get_cva(self, N, m, r, RF_n_tree, RF_max_leaf_nodes, beta):
@@ -684,16 +662,7 @@ class BSDE(object):
         S, dB = self.generate_paths(r, N, m)
 
         # price of the option at time T = Initialization for a call
-        if oPayoff == "call":
-            Y = np.maximum(S[-1] - self.K, 0)
-        elif oPayoff == "put":
-            Y = np.maximum(self.K - S[-1], 0)
-        elif oPayoff == "call combination":
-            Y = np.maximum(S[-1] - K1, 0) - 2 * np.maximum(S[-1] - K2, 0)
-        elif oPayoff == "put combination":
-            Y = np.maximum(K1 - S[-1], 0) - 2 * np.maximum(K2 - S[-1], 0)
-        elif oPayoff == 'call average':
-            Y = np.maximum(S.mean(axis=0) - self.K, 0)
+        Y = self.get_payoff(oPayoff, S, K1, K2)
 
         if mode == 'all':
             if (oType == 'European'):
@@ -701,11 +670,7 @@ class BSDE(object):
                 # drift = mu - sigma**2/2
                 # volatility = sigma
                 # weight matrix
-                W = np.zeros([N, N])
-                transition_matrix = np.zeros([N, N])
-                marginal_vector = np.zeros(N)
-                dist_matrix = np.zeros([N, N])
-                log_S_start, log_S_end = np.zeros(N), np.zeros(N)
+
                 Z, Y_inc = np.zeros(N), np.zeros(N)
                 cv, cv_centred = np.zeros([N, N]), np.zeros([N, N])
                 cv_std, cv_mean, cv_expectation = np.zeros(N), np.zeros(N), np.zeros(N)
@@ -746,7 +711,6 @@ class BSDE(object):
                     # print("After Z={}".format(Z))
                     # print("After Y_inc={}".format(Y_inc))
 
-
                     for __ in range(n_picard):
                         cv[:, :] = W * Z * dB[t]
                         cv_expectation[:] = 0
@@ -763,7 +727,6 @@ class BSDE(object):
                         plt.plot(S[t, :], Z, "b.")
                         plt.title("Z at time".format(str(t * dt)))
 
-
                         # plt.plot(S[t+1,:], Z_, "r.")
 
                         # plt.plot(X, Z, 'r.')
@@ -777,9 +740,7 @@ class BSDE(object):
                 # drift = mu - sigma**2/2
                 # volatility = sigma
                 # weight matrix
-                Z, Y_inc = np.zeros(N), np.zeros(N)
                 cv, cv_centred = np.zeros([N, N]), np.zeros([N, N])
-                cv_std, cv_mean, cv_expectation = np.zeros(N), np.zeros(N), np.zeros(N)
                 YdB, YdB_centred = np.zeros([N, N]), np.zeros([N, N])
                 YdB_std, YdB_mean = np.zeros(N), np.zeros(N)
                 # Iteration over time backwardly
@@ -813,54 +774,7 @@ class BSDE(object):
                     W = W - W_bar
                     W_sparse = sparse.csr_matrix(W)
 
-                    # Regression for Z_t:
-                    #
-                    # Z_t = E( Y_[t+dt] * dW_t | filtration_t)  /dt
-                    #
 
-                    # 1st version
-                    # if use_variance_reduction == True:
-                    #     # use the fact that ****
-                    #     for j in range(N):
-                    #         list_neighbors = NN[1][j:(j + n_neighbors)].tolist() + [j]
-                    #         Y_nn = np.zeros(n_neighbors + 1)
-                    #         W_nn = W[j, list_neighbors]
-                    #         dB_nn = dB[t, list_neighbors]
-                    #         cv[j, :] = W_nn * dB_nn * dB_nn
-                    #         cv_expectation = dt
-                    #         do_BSDE_mesh_update(Y, Y_nn, Z, dB[t], W,
-                    #                             cv, cv_expectation)
-                    #     Y_inc[:] = 0.
-                    #     # use control variate
-                    #     cv[:, :] = W * dB[t] * dB[t]
-                    #     cv_expectation[:] = dt
-                    #     # do BSDE update
-                    #     do_BSDE_mesh_update(Y, Y_inc, Z, dB[t], W,
-                    #                         cv, cv_expectation)
-                    #     # print("After Z={}".format(Z))
-                    #     # print("After Y_inc={}".format(Y_inc))
-                    #     for j in range(N):
-                    #         list_neighbors = NN[1][j:(j + n_neighbors)].tolist() + [j]
-                    #         Y_nn = Y[list_neighbors]
-                    #         W_nn = W[j, list_neighbors]
-                    #         dB_nn = dB[t, list_neighbors]
-                    #         cv1 = W_nn * (S[t, list_neighbors] * dB_nn)  # control variate
-                    #         cv1_std = np.std(cv1, axis=1)
-                    #         cv1_mean = np.mean(cv1, axis=1)
-                    #         cv1_centred = (cv1 - cv1_mean[:, np.newaxis]) / cv1_std[:, np.newaxis]
-                    #
-                    #         YdB = W_nn * (Y_nn * dB_nn)
-                    #         YdB_std = np.std(YdB, axis=1)
-                    #         YdB_mean = np.mean(YdB, axis=1)
-                    #         YdB_centred = (YdB - YdB_mean[:, np.newaxis]) / YdB_std[:, np.newaxis]
-                    #
-                    #         corr = np.mean(cv1_centred * YdB_centred, axis=1)
-                    #         Z[j] = np.mean(YdB - (cv1 - 1.) * corr[:, np.newaxis], axis=1) * (1. / dt)
-                    #         Y_inc[j] = df * ((1. / (n_neighbors + 1)) * np.dot(W_nn, Y_nn) + driver_measurable * dt)
-                    #
-                    #         # Z_ = (1. / N) * np.dot(W, Y * dB[t]) * (1. / dt)
-                    #         # print("diff = {}".format( np.sqrt(np.mean(np.square(Z-Z_)))) )
-                    # else:
                     if R != r:
                         Z = (1. / N) * W_sparse.dot(Y * dB[t]) * (1. / dt)
                     else:
@@ -882,7 +796,6 @@ class BSDE(object):
                     #   decompose driver as
                     #   driver = driver_measurable + driver_stoch
                     # where "driver_measurable" is already F_t measurable
-
 
                     # Y_inc = np.dot(W, Y + dt * driver)
                     for __ in range(n_picard):
@@ -1033,12 +946,7 @@ class BsdeHD(object):
                         payoff[t, j] = pay
 
         elif (oPayoff == 'spread'):
-            # if self.p==2:
-            # for j in range(N):
-            # for t in range(m + 1):
-            # pay_int = S[t, j, 0] - S[t, j, 1]
-            # pay = max(pay_int, 0)
-            # payoff[t, j] = pay
+
             if self.p % 2 == 0:
                 k = self.p / 2
                 for j in range(N):
@@ -1174,8 +1082,9 @@ class BsdeHD(object):
                 if n_picard > 0:
                     for __ in range(n_picard):
                         Y_inc = df * (
-                            expected_Y - theta * Z_sum - (self.R - self.r) * np.minimum(Y - (1. / self.sigma) * Z_sum,
-                                                                                        0))
+                                expected_Y - theta * Z_sum - (self.R - self.r) * np.minimum(
+                            Y - (1. / self.sigma) * Z_sum,
+                            0))
 
                         for k in range(self.p):
                             X_k = X[:, k]
@@ -1193,14 +1102,14 @@ class BsdeHD(object):
                         Z_sum = Z.sum(axis=1)
                 else:
                     Y_inc = df * (
-                        expected_Y - theta * Z_sum - (self.R - self.r) * np.minimum(Y - (1. / self.sigma) * Z_sum, 0))
+                            expected_Y - theta * Z_sum - (self.R - self.r) * np.minimum(Y - (1. / self.sigma) * Z_sum,
+                                                                                        0))
 
                 Y[:] = Y_inc
                 # plt.plot(X, Z, 'r.')
                 # plt.show()
             Y_opt = df * np.mean(Y)
             return Y_opt
-
 
     def get_price(self, N, m, RF_n_estimators=100, RF_max_leaf_nodes=50,
                   option_type='call',
@@ -1248,8 +1157,6 @@ class BsdeHD(object):
         elif regression == 'gbr':
             rf = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, max_depth=1, random_state=0, loss='ls')
 
-
-
         # Iteration over the paths"
         for t in range(m - 1, 0, -1):
             # Creation of the matrix N*p to regress"
@@ -1284,12 +1191,11 @@ class BsdeHD(object):
                 J = rf.predict(X)
                 Y = df * J
 
-            if oType=='American':
+            if oType == 'American':
                 Y = np.maximum(Y, h[t])
 
         Y_opt = df * np.mean(Y)
         return Y_opt
-
 
     def labordere(self, N, m, RF_n_estimators, RF_max_leaf_nodes):
 
@@ -1333,7 +1239,7 @@ class BsdeHD(object):
             J = rf.predict(X)
             mean_int = np.dot(X, np.ones(self.p))
             Y_new = J + dt * np.cos(mean_int) * (
-                alpha + 0.5 * self.sigma ** 2 + c * np.sin(mean_int) * a * df) * df + c * np.dot(Z, b) * J
+                    alpha + 0.5 * self.sigma ** 2 + c * np.sin(mean_int) * a * df) * df + c * np.dot(Z, b) * J
 
             Y[:] = Y_new
         Y_opt = np.mean(Y)
@@ -1407,9 +1313,7 @@ class BsdeHD(object):
                             -0.5 * np.square(dist_matrix - drift_dt) / sigma_sqt ** 2) / gauss_normalization
                         W[l, :, :] = transition_3d_matrix[l, :, :] / np.sum(transition_3d_matrix[l, :, :], axis=0)
 
-
                         # transition_3d_matrix = np.array(parmap.map(get_transition_matrix, list(range(self.p)), processes=n_threads))
-
 
                         # marginals
                     if display_plot:
@@ -1461,7 +1365,6 @@ class BsdeHD(object):
                     #   decompose driver as
                     #   driver = driver_measurable + driver_stoch
                     # where "driver_measurable" is already F_t measurable
-
 
                     driver_measurable = - theta * Z
                     driver_stoch = - self.r * Y - (self.R - self.r) * np.minimum(Y - (1. / self.sigma) * Z, 0)
@@ -1608,7 +1511,6 @@ class BsdeHD(object):
                     #   driver = driver_measurable + driver_stoch
                     # where "driver_measurable" is already F_t measurable
 
-
                     # Y_inc = np.dot(W, Y + dt * driver)
                     for __ in range(n_picard):
                         # update Z
@@ -1647,7 +1549,7 @@ class BsdeHD(object):
     def get_comparison_bs(self, strike, dim):
         d = self.sigma ** 2 * (1 - 1. / dim) / 2 + self.Q
         d1 = 1. / (self.sigma * np.sqrt(self.T / dim)) * (
-            np.log(self.S_init / strike) + (self.R + 0.5 * self.sigma ** 2 / dim - d) * self.T)
+                np.log(self.S_init / strike) + (self.R + 0.5 * self.sigma ** 2 / dim - d) * self.T)
         d2 = d1 - self.sigma * np.sqrt(self.T / dim)
         dscnt = np.exp(-self.R * self.T)
         call = -norm.cdf(d2) * strike * dscnt + norm.cdf(d1) * self.S_init * np.exp(- d * self.T)
@@ -1731,7 +1633,7 @@ class Touzi(object):
 
                 U[j] = J[j] + (-0.5 * self.sigma * (Gamma_1_1[j] + Gamma_2_2[j]) + 0.5 * Gamma_1_1[
                     j] * self.sigma ** 2 + opt_theta.fun) * dt
-        print (U)
+        print(U)
         u_opt = np.mean(U)
         return u_opt
 
@@ -1836,10 +1738,10 @@ class Touzi_5D(object):
             J = rf.predict(X)
 
             U = J + (-0.5 * self.sigma * (
-                Gamma_0_0 + Gamma_1_1 + Gamma_2_2 + Gamma_3_3 + Gamma_4_4) + 0.5 * self.sigma ** 2 * Gamma_1_1 -
+                    Gamma_0_0 + Gamma_1_1 + Gamma_2_2 + Gamma_3_3 + Gamma_4_4) + 0.5 * self.sigma ** 2 * Gamma_1_1 -
                      Z_1 * X[:, 0] * X[:, 1] + (
-                         (self.mu2 - self.mu1) * Z_1 + self.sigma1 ** 2 * X[:, 3] * Gamma_0_2) ** 2 / (
-                         2 * self.sigma1 ** 2 * X[:, 3] * Gamma_0_0 * X[:, 2] ** -1)
+                             (self.mu2 - self.mu1) * Z_1 + self.sigma1 ** 2 * X[:, 3] * Gamma_0_2) ** 2 / (
+                             2 * self.sigma1 ** 2 * X[:, 3] * Gamma_0_0 * X[:, 2] ** -1)
                      + ((self.mu2 - self.mu1) * Z_1) ** 2 / (2 * self.sigma2 ** 2 * X[:, 4] * Gamma_0_0)) * dt
 
         u_opt = np.mean(U)

@@ -6,7 +6,7 @@ def interval_slicing(A, delta):
 
 
 def is_x_in_interval(x, I):
-    try :
+    try:
         return True if ((x - I[0] >= 0) and (x - I[1] < 0)) else False
     except KeyError:
         print("cannot access index of this interval")
@@ -17,7 +17,7 @@ def bucketing_by_interval(points, I):
 
 
 def mean_by_bucket(bucket, Y):
-    if len(bucket) > 0 :
+    if len(bucket) > 0:
         Y_int = np.array([Y[x[0]] for x in bucket])
         mean = np.mean(Y_int)
         return mean
@@ -28,7 +28,7 @@ def mean_by_bucket(bucket, Y):
 def get_all_buckets(points, sliced_interval):
     buckets = []
     for i in range(len(sliced_interval) - 1):
-        bucket = bucketing_by_interval(points, [sliced_interval[i], sliced_interval [i + 1]])
+        bucket = bucketing_by_interval(points, [sliced_interval[i], sliced_interval[i + 1]])
         buckets.append(bucket)
     return sliced_interval, buckets
 
@@ -36,9 +36,9 @@ def get_all_buckets(points, sliced_interval):
 def locate_point_in_sliced_interval(x, sliced_interval):
     i = 0
     I = [sliced_interval[i], sliced_interval[i + 1]]
-    while i < len(sliced_interval) - 2 and is_x_in_interval(x, I)==False:
+    while i < len(sliced_interval) - 2 and is_x_in_interval(x, I) == False:
         i = i + 1
-        I = [sliced_interval[i], sliced_interval[i+1]]
+        I = [sliced_interval[i], sliced_interval[i + 1]]
     if i <= len(sliced_interval) - 2:
         return i
     else:

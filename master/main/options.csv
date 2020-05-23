@@ -1,3 +1,0 @@
-id,Spot,Strike,Maturity,Volatility ,Drift,Dividend,Risk_free_rate
-1,100,100,0.5,0.2,0.6,0,0.04
-2,100,100,0.5,0.2,0.6,0,0.04
